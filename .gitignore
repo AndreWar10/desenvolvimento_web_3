@@ -1,0 +1,42 @@
+# Dependências de Node.js
+node_modules/
+
+# Diretórios de build
+dist/
+build/
+
+# Arquivos de log
+*.log
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do IDE
+.vscode/
+.idea/
+
+# Arquivos gerados por testes
+coverage/
+
+# Arquivos de cache
+*.cache
+*.tmp
+
+# Dependências do npm que não são gerenciadas pelo package-lock.json
+package-lock.json
+yarn.lock
+
+# Diretórios de cache de npm
+.npm/
+
+# Arquivos de segurança
+*.pem
+
+# Arquivos de configuração do Firebase
+firebase-service-account.json
