@@ -7,7 +7,7 @@ class BookModel {
   }
 
   // Método para converter a instância em um objeto simples
-  toPlainObject() {
+  toJson() {
     return {
       author: this.author,
       isbn: this.isbn,

@@ -1,13 +1,16 @@
 const db = require('../config/firebase');
+const MessageService = require('../utils/messageService');
 
 class BookService {
   static async addBook(book) {
+    const messageService = new MessageService();
     try {
-      const docRef = db.collection('books').doc(); // Gera um ID automático
-      await docRef.set(book.toPlainObject()); // Usa o método toPlainObject
-      console.log('Livro cadastrado com sucesso!');
+      messageService.loading();
+      const docRef = db.collection('books').doc();
+      await docRef.set(book.toJson());
+      messageService.success('Livro cadastrado com sucesso!');
     } catch (error) {
-      console.error('Erro ao cadastrar livro:', error);
+      messageService.error('Erro ao cadastrar livro:', error);
     }
   }
 }
