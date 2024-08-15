@@ -20,8 +20,6 @@ const registerBook = async () => {
     
   } catch (error) {
     messageService.error('Erro ao cadastrar livro:', error);
-  } finally {
-    closeInterface();
   }
 };
 

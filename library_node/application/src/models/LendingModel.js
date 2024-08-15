@@ -13,7 +13,6 @@ class LendingModel {
         nameUser: this.nameUser,
         bookName: this.bookName,
         dtLocation: this.dtLocation,
-        name: this.name,
         status: this.status
       };
     }

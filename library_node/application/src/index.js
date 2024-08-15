@@ -1,10 +1,11 @@
 const readline = require('readline');
 const MessageService = require('./utils/messageService');
-const { setInterface, closeInterface } = require('./utils/readlineInterface');
 const AuthService = require('./auth/authService');
+const { setInterface, closeInterface } = require('./utils/readlineInterface');
 const { registerBook } = require('./interfaces/BookInterface');
 const { registerAuthor } = require('./interfaces/AuthorInterface');
 const { registerUser } = require('./interfaces/UserInterface');
+const { registerLending } = require('./interfaces/LendingInterface');
 
 const readlineI = readline.createInterface({
     input: process.stdin,
@@ -13,16 +14,16 @@ const readlineI = readline.createInterface({
 
 setInterface(readlineI);
 
-// Variável global para armazenar o usuário logado
 let currentUser = null;
 
 async function showMenu() {
     const messageService = new MessageService();
 
-    messageService.input("\n"+ currentUser.name + ", escolha uma opção:");
+    messageService.input("\n" + currentUser.name + ", escolha uma opção:");
     messageService.input("1. Cadastrar Livro");
     messageService.input("2. Cadastrar Autor");
     messageService.input("3. Cadastrar Usuário");
+    messageService.input("4. Emprestar Livro");
     messageService.input("9. Sair\n");
 
     readlineI.question("Digite o número da opção desejada: ", async (option) => {
@@ -37,6 +38,10 @@ async function showMenu() {
                 break;
             case '3':
                 await registerUser();
+                showMenu();
+                break;
+            case '4':
+                await registerLending();
                 showMenu();
                 break;
             case '9':
@@ -75,42 +80,25 @@ async function login() {
 }
 
 async function registerAccount() {
-    const authService = new AuthService();
-    const messageService = new MessageService();
 
-    readlineI.question("Nome de usuário: ", async (username) => {
-        const userDoc = await authService.getUser(username);
-        if (userDoc.exists) {
-            messageService.error("Usuário já existe. Tente outro nome.");
-            registerAccount(); // Solicita novamente se o usuário já existir
-        } else {
-            readlineI.question("Senha: ", async (password) => {
-                await authService.createUser(username, password);
-                messageService.success("Conta criada com sucesso!");
-                login(); // Após criar a conta, redireciona para o login
-            });
-        }
-    });
+    await registerUser();
+
 }
 
-function showInitialMenu() {
+async function showInitialMenu() {
     const messageService = new MessageService();
 
     messageService.input("\nEscolha uma opção:");
     messageService.input("1. Fazer Login");
-    messageService.input("2. Criar Conta");
     messageService.input("9. Sair\n");
 
-    readlineI.question("Digite o número da opção desejada: ", (option) => {
+    readlineI.question("Digite o número da opção desejada: ", async (option) => {
         switch (option) {
             case '1':
-                login();
-                break;
-            case '2':
-                registerAccount();
+                await login();
                 break;
             case '9':
-                closeInterface();
+                await closeInterface();
                 messageService.end();
                 break;
             default:
@@ -121,9 +109,8 @@ function showInitialMenu() {
     });
 }
 
-// Inicializa o menu inicial
 showInitialMenu();
 
 module.exports = {
     showMenu
-  };
+};

@@ -16,8 +16,6 @@ const registerAuthor = async () => {
     
   } catch (error) {
     messageService.error('Erro ao cadastrar autor:', error);
-  } finally {
-    // closeInterface();
   }
 };
 

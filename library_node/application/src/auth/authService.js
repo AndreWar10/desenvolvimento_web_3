@@ -33,6 +33,17 @@ class AuthService {
         return { exists: true, authenticated: false };
         }
     }
+
+    async getUser(username) {
+        const userCollection = db.collection('users');
+    
+        // Busca documentos onde o campo "username" é igual ao valor fornecido
+        const userQuerySnapshot = await userCollection.where('name', '==', username).get();
+
+        return userQuerySnapshot.isNotEmpty;
+    }
+
+
 }
 
 module.exports = AuthService;
