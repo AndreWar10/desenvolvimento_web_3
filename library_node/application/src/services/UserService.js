@@ -29,7 +29,9 @@ class UserService {
   }
 
   static async getAllUsers() {
+    const messageService = new MessageService();
     try {
+      messageService.loading();
       // Referência para a coleção de usuários
       const userCollection = db.collection('users');
 
