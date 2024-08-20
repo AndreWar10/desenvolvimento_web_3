@@ -34,7 +34,9 @@ Senha -> teste123
 #
 
 <div>
-Para rodar a aplicação, basta acessar o projeto e rodar:
+Para rodar a aplicação, solicite o arquivo <firebase-service-account.json> e coloque na pasta application
+  
+Feito isso, basta rodar:
   
 npm i
 
@@ -44,5 +46,10 @@ node index.js
 </div>  
 
 #
+
+Print do banco:
+
+
+<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/images/firebase.png"/>
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=b930b7&height=120&section=footer"/>
