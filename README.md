@@ -26,7 +26,7 @@ node index.js
 <div>
 Para usuário, pode usar: 
   
-User -> erick && Senha -> teste123
+User -> erick  |  Senha -> teste123
 </div>  
 
 #
