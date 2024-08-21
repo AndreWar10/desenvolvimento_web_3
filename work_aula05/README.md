@@ -14,7 +14,7 @@ Repositório para a disciplina de Web 3 - Fatec Franca 2024.
 #
 
 <div>
-Para rodar a aplicação, basta ter o dart instalado, acessar o projeto na pasta lib e rodar:
+Para rodar a aplicação, basta ter o dart instalado ou usar DartPad, acessar o projeto na pasta lib e rodar:
 
 > dart run ex_01.dart
 
