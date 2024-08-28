@@ -14,7 +14,7 @@ Repositório para a disciplina de Web 3 - Fatec Franca 2024.
 #
 
 <div>
-Para rodar a aplicação, basta ter o dart instalado, acessar o projeto na pasta lib e rodar:
+Para rodar a aplicação, basta ter o dart instalado ou usar DartPad, acessar o projeto na pasta lib e rodar:
 
 > dart run ex_01.dart
 
@@ -24,18 +24,18 @@ Resoluções:
 
 Ex 01 - 
 
-<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/images/firebase.png"/>
+<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/work_aula05/assets/ex-01.png"/>
 
 Ex 02 - 
 
-<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/images/firebase.png"/>
+<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/work_aula05/assets/ex-02.png"/>
 
 Ex 03 - 
 
-<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/images/firebase.png"/>
+<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/work_aula05/assets/ex-03.png"/>
 
 Ex 04 - 
 
-<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/images/firebase.png"/>
+<img src="https://github.com/AndreWar10/desenvolvimento_web_3/blob/main/work_aula05/assets/ex-04.png"/>
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=b930b7&height=120&section=footer"/>
