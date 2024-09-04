@@ -1,0 +1,90 @@
+/* Define o estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Estilo para o título principal */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+/* Estilo para o subtítulo */
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 5px;
+}
+
+/* Estilo do input e botão */
+input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+/* Lista de compras e carrinho */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #ecf0f1;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos botões de remover/comprar */
+li button {
+    padding: 7px 15px;
+    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+li button:first-of-type {
+    background-color: #e74c3c;
+}
+
+li button:first-of-type:hover {
+    background-color: #c0392b;
+}
+
+li button:last-of-type {
+    background-color: #3498db;
+}
+
+li button:last-of-type:hover {
+    background-color: #2980b9;
+}
