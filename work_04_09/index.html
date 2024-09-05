@@ -1,207 +1,22 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Lista de Compras</title>
-    <style>
-        /* O CSS bonitinho que você quer */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 5px;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: 60%;
-            border: 2px solid #bdc3c7;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: white;
-            background-color: #2ecc71;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #27ae60;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #ecf0f1;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        li button {
-            padding: 7px 15px;
-            font-size: 1em;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        li button:first-of-type {
-            background-color: #e74c3c;
-        }
-
-        li button:first-of-type:hover {
-            background-color: #c0392b;
-        }
-
-        li button:last-of-type {
-            background-color: #3498db;
-        }
-
-        li button:last-of-type:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>Minha Lista de Compras</h1>
-    <input type="text" id="novoItem" placeholder="Digite um item">
-    <button id="adicionarBtn">Adicionar</button>
-    <h2>Itens:</h2>
-    <ul id="listaCompras"></ul>
+    <h1>My Shopping List</h1>
+    <input type="text" id="newItemInput" placeholder="Enter an item">
+    <button id="addItemBtn">Add Item</button>
 
-    <h2>Itens Carrinho:</h2>
-    <ul id="carrinho"></ul>
-    <script>
-        const obterItens = () => fetch('/itens').then(res => res.json());
-        const obterItensCarrinho = () => fetch('/itensCart').then(res => res.json());
+    <h2 id="itemsTitle">Items:</h2>
+    <ul id="shoppingList"></ul>
 
-        const adicionarItem = async (nome) => await fetch('/itens', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nome, comprado: false })
-        });
+    <h2 id="cartTitle">Cart Items:</h2>
+    <ul id="cartList"></ul>
 
-        const adicionarItemCarrinho = async (name, idx) => {
-            await fetch(`/itens/${idx}`, { method: 'DELETE' });
-
-            await fetch('/itensCart', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nome: name, comprado: false })
-            });
-
-            renderizarCarrinho(await obterItensCarrinho());
-            renderizarLista(await obterItens());
-        }
-
-
-        const removerItem = async (index) => {
-            await fetch(`/itens/${index}`, { method: 'DELETE' });
-            renderizarLista(await obterItens());
-        }
-
-        const removerItemCarrinho = async (index) => {
-            await fetch(`/itensCart/${index}`, { method: 'DELETE' });
-            renderizarCarrinho(await obterItensCarrinho());
-        }
-
-        function atualizarTitulos() {
-            const listaItens = document.getElementById('listaCompras');
-            const carrinhoItens = document.getElementById('carrinho');
-            const tituloItens = document.querySelector('h2:nth-of-type(1)');
-            const tituloCarrinho = document.querySelector('h2:nth-of-type(2)');
-
-            // Se a lista de compras estiver vazia, esconde o título "Itens"
-            if (listaItens.children.length === 0) {
-                tituloItens.style.display = 'none';
-            } else {
-                tituloItens.style.display = 'block';
-            }
-
-            // Se o carrinho estiver vazio, esconde o título "Itens Carrinho"
-            if (carrinhoItens.children.length === 0) {
-                tituloCarrinho.style.display = 'none';
-            } else {
-                tituloCarrinho.style.display = 'block';
-            }
-        }
-
-        function renderizarLista(itens) {
-            const listaComprasUl = document.getElementById('listaCompras');
-            listaComprasUl.innerHTML = itens.map((item, index) => `
-                <li>
-                    ${item.nome}  
-                    <button onclick="removerItem(${index})">Remover</button> 
-                    <button onclick="adicionarItemCarrinho('${item.nome}', ${index})">Comprar</button> 
-                </li>
-            `).join('');
-            atualizarTitulos();
-        }
-
-        function renderizarCarrinho(itens) {
-            const carrinhoList = document.getElementById('carrinho');
-            carrinhoList.innerHTML = itens.map((item, index) => `
-                <li>
-                    ${item.nome}  
-                    <button onclick="removerItemCarrinho(${index})">Remover</button> 
-                </li>
-            `).join('');
-            atualizarTitulos();
-        }
-
-        document.getElementById('adicionarBtn').addEventListener('click', async () => {
-            const novoItemInput = document.getElementById('novoItem');
-            const novoItem = novoItemInput.value.trim();
-            if (novoItem) {
-                try {
-                    await adicionarItem(novoItem);
-                    renderizarLista(await obterItens());
-                    novoItemInput.value = '';
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        });
-
-        window.onload = async () => {
-            try {
-                renderizarLista(await obterItens());
-                renderizarCarrinho(await obterItensCarrinho());
-            } catch (error) {
-                console.error(error);
-            }
-        };
-    </script>
+    <script src="scripts.js"></script>
 </body>
-
 </html>
