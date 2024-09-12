@@ -48,7 +48,7 @@ class UploadProductController extends ChangeNotifier {
 
         final response = await request.send();
 
-        if (response.statusCode == 201) {
+        if (response.statusCode == 200) {
             setLoading(false);
             debugPrint('Product uploaded successfully!');
             messageFunc(true, 'Produto criado com sucesso!');

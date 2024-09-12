@@ -1,3 +1,3 @@
 class Environment {
-  static String get ip => '192.168.100.81';
+  static String get ip => '172.20.192.32';
 }

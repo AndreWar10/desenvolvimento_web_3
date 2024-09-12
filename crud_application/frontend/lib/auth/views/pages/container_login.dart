@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:example_10_09/admin/views/pages/admin_page.dart';
 import 'package:example_10_09/auth/controllers/user_controller.dart';
 import 'package:example_10_09/auth/views/pages/user_not_logged_in.dart';
-import 'package:example_10_09/core/controllers/platform_controller.dart';
 import 'package:example_10_09/desktop_store/views/pages/attendant_page.dart';
 import 'package:example_10_09/online_store/views/pages/online_store_page.dart';
 import 'package:flutter/foundation.dart';
@@ -30,7 +28,9 @@ class _ContainerLoginState extends State<ContainerLogin> {
   @override
   Widget build(BuildContext context) {
     if(userController.userIsLoggedIn) {
-      if((Platform.isAndroid || Platform.isIOS || kIsWeb)) {
+      if(kIsWeb) {
+        return const OnlineStorePage(); 
+      } else if(Platform.isAndroid || Platform.isIOS) {
         if(userController.user!.type == 'admin') {
           return const AdminPage();
         } 

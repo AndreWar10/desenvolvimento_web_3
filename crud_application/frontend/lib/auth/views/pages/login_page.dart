@@ -61,7 +61,7 @@ class LoginPageState extends State<LoginPage> {
                             },
                             (UserModel user) {
                               context.read<UserController>().setUser(user);
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ContainerLogin()));
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const ContainerLogin()));
                             }
                           ),
                           textButton: 'Login',
