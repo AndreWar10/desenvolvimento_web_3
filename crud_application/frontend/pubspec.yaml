@@ -82,6 +82,34 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Poppins-Thin
+      fonts:
+        - asset: fonts/Poppins-Thin.ttf 
+    - family: Poppins-ExtraLight
+      fonts:
+        - asset: fonts/Poppins-ExtraLight.ttf
+    - family: Poppins-Light
+      fonts:
+        - asset: fonts/Poppins-Light.ttf
+    - family: Poppins-Regular
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
+    - family: Poppins-Medium 
+      fonts:
+        - asset: fonts/Poppins-Medium.ttf
+    - family: Poppins-SemiBold 
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+    - family: Poppins-Bold
+      fonts:
+        - asset: fonts/Poppins-Bold.ttf  
+    - family: Poppins-ExtraBold
+      fonts:
+        - asset: fonts/Poppins-ExtraBold.ttf
+    - family: Poppins-Black
+      fonts:
+        - asset: fonts/Poppins-Black.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

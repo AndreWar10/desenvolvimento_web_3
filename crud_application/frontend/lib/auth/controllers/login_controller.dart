@@ -1,5 +1,5 @@
 import 'package:example_10_09/auth/models/user_model.dart';
-import 'package:example_10_09/core/utils/environment.dart';
+import 'package:example_10_09/core/utils/routes/api_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -27,7 +27,7 @@ class LoginController extends ChangeNotifier {
     setLoading(true);
 
     final response = await http.post(
-      Uri.parse('http://${Environment.ip}:3001/login'),
+      Uri.parse(ApiRoutes.login),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': emailController.text, 'password': passwordController.text}),
     );

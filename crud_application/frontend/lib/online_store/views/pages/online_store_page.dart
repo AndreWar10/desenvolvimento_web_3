@@ -9,7 +9,7 @@ class OnlineStorePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Eccommerce'),
       ),
-      body: Column(
+      body: const Column(
         children: [
           
         ],

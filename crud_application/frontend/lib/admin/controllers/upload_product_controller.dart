@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:example_10_09/core/utils/environment.dart';
+import 'package:example_10_09/core/utils/routes/api_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -28,8 +28,8 @@ class UploadProductController extends ChangeNotifier {
 
     setLoading(true);
 
-    final uri = Uri.parse('http://${Environment.ip}:3001/upload-product'); // Backend URL
-    final mimeTypeData = lookupMimeType(image!.path)!.split('/'); // Get MIME type
+    final uri = Uri.parse(ApiRoutes.uploadProduct);
+    final mimeTypeData = lookupMimeType(image!.path)!.split('/'); 
 
     try {
         final request = http.MultipartRequest('POST', uri)
@@ -47,20 +47,18 @@ class UploadProductController extends ChangeNotifier {
           );
 
         final response = await request.send();
+        setLoading(false);
 
         if (response.statusCode == 200) {
-            setLoading(false);
             debugPrint('Product uploaded successfully!');
             messageFunc(true, 'Produto criado com sucesso!');
-            clear();
+            clearData();
         } else {
-            setLoading(false);
             debugPrint('Product upload failed with status code: ${response.statusCode}');
             messageFunc(false, 'Erro ao criar produto!');
         }
     } catch (e) {
         debugPrint('Error during upload: $e');
-        setLoading(false);
         messageFunc(false, 'Erro ao criar produto!');
     }
   }
@@ -74,7 +72,7 @@ class UploadProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clear() {
+  void clearData() {
     nameController.clear();
     descriptionController.clear();
     priceController.clear();

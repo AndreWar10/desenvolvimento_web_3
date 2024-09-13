@@ -1,4 +1,5 @@
 import 'package:example_10_09/auth/controllers/user_controller.dart';
+import 'package:example_10_09/auth/views/pages/login2.dart';
 import 'package:example_10_09/auth/views/pages/login_page.dart';
 import 'package:example_10_09/core/controllers/platform_controller.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.deepOrange,
-                primary: Colors.deepOrange,
+                seedColor: Colors.deepPurple,
+                primary: Colors.deepPurple,
                 
               ),
               useMaterial3: true,
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
               )
               
             ),
-            home: const LoginPage(),
+            home: const Login2(),
           );
         }
       ),
