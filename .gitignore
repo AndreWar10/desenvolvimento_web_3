@@ -12,6 +12,7 @@ build/
 .env
 .env.local
 .env.*.local
+.history
 
 # Arquivos de sistema
 .DS_Store

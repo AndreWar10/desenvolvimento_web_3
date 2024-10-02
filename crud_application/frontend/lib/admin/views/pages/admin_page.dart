@@ -18,6 +18,9 @@ class AdminPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: DefaultButton(
+              height: 64,
+              width: double.infinity,
+              loading: false,
               textButton: 'Cadastrar Produto', 
               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const UploadProductScreen())),
             ),

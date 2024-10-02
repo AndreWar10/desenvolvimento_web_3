@@ -1,5 +1,4 @@
 import 'package:example_10_09/auth/controllers/user_controller.dart';
-import 'package:example_10_09/auth/views/pages/login2.dart';
 import 'package:example_10_09/auth/views/pages/login_page.dart';
 import 'package:example_10_09/core/controllers/platform_controller.dart';
 import 'package:flutter/material.dart';
@@ -25,13 +24,10 @@ class MyApp extends StatelessWidget {
       builder: (context, sizingInformation) {
         context.read<PlatformController>().updatePlatform(sizingInformation);
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'Web 3',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.deepPurple,
-                primary: Colors.deepPurple,
-                
-              ),
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, primary: Colors.deepPurple),
               useMaterial3: true,
               appBarTheme: const AppBarTheme(
                 color: Colors.deepOrange,
@@ -42,10 +38,9 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 )
-              )
-              
+              ),
             ),
-            home: const Login2(),
+            home: const LoginPage(),
           );
         }
       ),

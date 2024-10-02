@@ -8,30 +8,31 @@ class DefaultTextFormField extends StatelessWidget {
   final Function onChanged;
   final bool obscureText;
   final EdgeInsetsGeometry? padding;
+  final FocusNode _focusNode = FocusNode();
 
-  const DefaultTextFormField(
-      {super.key,
-      required this.textController,
-      required this.labelText,
-      this.sufix,
-      required this.onChanged,
-      this.obscureText = false,
-      this.padding});
+  DefaultTextFormField({
+    super.key,
+    required this.textController,
+    required this.labelText,
+    this.sufix,
+    required this.onChanged,
+    this.obscureText = false,
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? const EdgeInsets.all(0),
-      child: Container(
-        height: 60,
-        padding: const EdgeInsets.only(left: 16),
-        decoration: BoxDecoration(
+      child: GestureDetector(
+        onTap: () => _focusNode.requestFocus(),
+        child: Container(
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.grey,
-              width: .4,
-            )),
-        child: Center(
+            border: Border.all(color: Colors.grey, width: .4),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,21 +48,33 @@ class DefaultTextFormField extends StatelessWidget {
                   ),
                 ],
               ),
-              TextField(
-                controller: textController,
-                decoration: InputDecoration(
-                  labelText: null,
-                  isDense: true,
-                  contentPadding: const EdgeInsets.all(0),
-                  border: InputBorder.none,
-                  suffixIcon: sufix,
-                ),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: AppFonts.poppins400,
-                ),
-                onChanged: (_) => onChanged(),
-                obscureText: obscureText,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: textController,
+                      focusNode: _focusNode,
+                      decoration: const InputDecoration(
+                        labelText: null,
+                        isDense: true,
+                        contentPadding: EdgeInsets.zero,
+                        border: InputBorder.none,
+                      ),
+                      cursorHeight: 16.0,
+                      cursorWidth: 2,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: AppFonts.poppins400,
+                      ),
+                      onChanged: (_) => onChanged(),
+                      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                      obscureText: obscureText,
+                    ),
+                  ),
+                  if (sufix != null) sufix!,
+                ],
               ),
             ],
           ),

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppFonts {
   static String get poppins100 => 'Poppins-Thin';
   static String get poppins200 => 'Poppins-ExtraLight';
